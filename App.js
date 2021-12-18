@@ -1,86 +1,84 @@
-import React, { useContext } from "react"
+import React, { useState, useEffect, useRef, useCallback, useContext } from 'react';
+import {
+    Image,
+    StyleSheet,
+    Text,
+    View,
+    Pressable,
+    Touchable,
+    Button,
+    BackHandler
+} from 'react-native';
+
 import { Provider } from "react-redux"
 import "react-native-gesture-handler"
 import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack"
-import {
-  configureStore,
-  createReducer,
-  combineReducers
-} from "@reduxjs/toolkit"
 
-import { screens } from "@screens"
-import { modules, reducers, hooks, initialRoute } from "@modules"
-import { connectors } from "@store"
+
+import DashboardScreen from './screens/dashboardScreen';
+import ChatScreen from './screens/chatScreen';
 
 const Stack = createStackNavigator()
 
-import { GlobalOptionsContext, OptionsContext, getOptions } from "@options"
-
-const getNavigation = (modules, screens, initialRoute) => {
-  const Navigation = () => {
-    const routes = modules.concat(screens).map(mod => {
-      const pakage = mod.package;
-      const name = mod.value.title;
-      const Navigator = mod.value.navigator;
-      const Component = () => {
-        return (
-          <OptionsContext.Provider value={getOptions(pakage)}>
-            <Navigator />
-          </OptionsContext.Provider>
-        )
-      }
-      return <Stack.Screen key={name} name={name} component={Component} />
-    })
-
-    const screenOptions = { headerShown: true };
-
-    return (
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName={initialRoute}
-          screenOptions={screenOptions}
-        >
-          {routes}
-        </Stack.Navigator>
-      </NavigationContainer>
-    )
-  }
-  return Navigation
-}
-
-const getStore = (globalState) => {
-  const appReducer = createReducer(globalState, _ => {
-    return globalState
-  })
-
-  const reducer = combineReducers({
-    app: appReducer,
-    ...reducers,
-    ...connectors
-  })
-
-  return configureStore({
-    reducer: reducer,
-    middleware: getDefaultMiddleware => getDefaultMiddleware()
-  })
-}
-
-const App = () => {
-  const global = useContext(GlobalOptionsContext)
-  const Navigation = getNavigation(modules, screens, initialRoute)
-  const store = getStore(global)
-
-  let effects = {}
-  hooks.map(hook => {
-    effects[hook.name] = hook.value()
-  })
-
+const App = ({ navigation }) => {
+ 
   return (
-    <Provider store={store}>
-      <Navigation />
-    </Provider>
+    <NavigationContainer>
+      <Stack.Navigator>
+       <Stack.Screen
+        name="Home"
+        component={DashboardScreen}
+        options={{
+          headerTitle: 'CHAT HISOTRY',
+          headerTitleAlign: 'center',
+          headerRight: () => (
+            <Button
+              onPress={() => alert('This is a button!')}
+              title="Info"
+              color="#fff"
+            />
+          ),
+          headerLeft: () => (
+            <Button
+              onPress={() => alert('This is a button!')}
+              title="Info"
+              color="#fff"
+            />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="ChatScreen"
+        component={ChatScreen}
+        options={{
+          headerTitle: 'ELMER JAMES',
+          headerTitleAlign: 'center',
+          headerRight: () => (
+            <Button
+              title="Info"
+              color="#fff"
+            />
+          ),
+          headerLeft: () => (
+            <Button
+              onPress={()=> navigation.navigate('Home')}
+              title="Info"
+              color="#fff"
+            />
+          ),
+        }}
+      />
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
+
+const styles = StyleSheet.create({
+  screenContainer:{
+    flex: 1,
+    backgroundColor: '#bbb'
+  }
+})
 
 export default App
