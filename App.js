@@ -10,6 +10,8 @@ import {
     BackHandler
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/dist/Entypo';
+
 import { Provider } from "react-redux"
 import "react-native-gesture-handler"
 import { NavigationContainer } from "@react-navigation/native"
@@ -33,18 +35,14 @@ const App = ({ navigation }) => {
           headerTitle: 'CHAT HISOTRY',
           headerTitleAlign: 'center',
           headerRight: () => (
-            <Button
-              onPress={() => alert('This is a button!')}
-              title="Info"
-              color="#fff"
-            />
+            <Text style={styles.linkIcon}>
+              <Icon name="plus" size={20} color="#000" />
+            </Text>
           ),
           headerLeft: () => (
-            <Button
-              onPress={() => alert('This is a button!')}
-              title="Info"
-              color="#fff"
-            />
+            <Text style={styles.linkIcon}>
+              <Icon name="chevron-left" size={20} color="#000" />
+            </Text>
           ),
         }}
       />
@@ -55,17 +53,14 @@ const App = ({ navigation }) => {
           headerTitle: 'ELMER JAMES',
           headerTitleAlign: 'center',
           headerRight: () => (
-            <Button
-              title="Info"
-              color="#fff"
-            />
+            <Text style={styles.linkIcon}>
+              <Icon name="dots-three-vertical" size={20} color="#000" />
+            </Text>
           ),
           headerLeft: () => (
-            <Button
-              onPress={()=> navigation.navigate('Home')}
-              title="Info"
-              color="#fff"
-            />
+            <Text style={styles.linkIcon}>
+              <Icon name="chevron-left" size={20} color="#000" />
+            </Text>
           ),
         }}
       />

@@ -11,10 +11,13 @@ import {
 } from 'react-native';
 
 
+import Icon from 'react-native-vector-icons/dist/AntDesign';
+
+
 
 const ChatScreen = ({ navigation }) => {
     const [text, onChangeText] = React.useState("Useless Text");
-  const [number, onChangeNumber] = React.useState(null);
+    const [number, onChangeNumber] = React.useState(null);
     return(
        <View style={styles.screenContainer}>
             <View style={styles.messageContainer}>
@@ -38,6 +41,7 @@ const ChatScreen = ({ navigation }) => {
                         <Text>
                         Lorem ipsum dolor sit amet,
                         </Text>
+                        
                     </View>
                     <View style={styles.timestampContainer}>
                         <Text style={styles.timestampTxt}>
@@ -50,10 +54,14 @@ const ChatScreen = ({ navigation }) => {
             <View style={styles.textinputContainer}>
                 <TextInput
                     style={styles.textInput}
-                    onChangeText={onChangeNumber}
-                    value={number}
                     placeholder="Write your message"
                 />
+               <View>
+                    <Text style={styles.linkIcon}>
+                        <Icon name="link" size={20} color="#000" />
+                    </Text>
+               </View>
+               
             </View>
        </View>
     )
@@ -115,12 +123,19 @@ const styles = StyleSheet.create({
         height: '10%',
         position: 'absolute',
         bottom: 0,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: '#fff'
     },
     textInput:{
         width: '90%',
         height: '100%',
+        paddingLeft: '2.5%',
         backgroundColor: '#fff'
+    },
+    linkIcon:{
+        alignSelf: 'flex-end',
     }
 })
 

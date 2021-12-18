@@ -9,6 +9,7 @@ import {
     FlatList
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/dist/Entypo';
 
 const DashboardScreen = ({ navigation }) => {
 
@@ -28,14 +29,43 @@ const DashboardScreen = ({ navigation }) => {
             </View>
             <View style={styles.userInfoBottomHalf}>
               <Text style={styles.messageTxt} numberOfLines={1}>
-                perfect! 👏 perfect! 👏 perfect! 👏 perfect! 
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis diam in nulla semper consectetur. Quisque ante quam, molestie in elit id, dignissim auctor urna.
               </Text>
             </View>
           </View>
       </Pressable>
       <View style={styles.tabnavigatorPlaceholder}>
         <View style={styles.tabnavigatorItem}> 
-
+          <Text>
+            <Icon name="home" size={24} color="#DA7F57" />
+          </Text>
+          <Text style={styles.tabnavigationLabel}>
+            Dashboard
+          </Text>
+        </View>
+        <View style={styles.tabnavigatorItem}> 
+          <Text>
+            <Icon name="calendar" size={24} color="#294249" />
+          </Text>
+          <Text style={styles.tabnavigationLabel}>
+            Calendar
+          </Text>
+        </View>
+        <View style={styles.tabnavigatorItem}> 
+          <Text>
+            <Icon name="video-camera" size={24} color="#294249" />
+          </Text>
+          <Text style={styles.tabnavigationLabel}>
+            Video
+          </Text>
+        </View>
+        <View style={styles.tabnavigatorItem}> 
+          <Text>
+            <Icon name="chat" size={24} color="#294249" />
+          </Text>
+          <Text style={styles.tabnavigationLabel}>
+            Chat
+          </Text>
         </View>
       </View>
     </View>
@@ -59,7 +89,11 @@ const styles = StyleSheet.create({
   tabnavigatorItem:{
     width: '25%',
     height: '100%',
-    backgroundColor: '#bbb'
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  tabnavigationLabel:{
+    fontSize: 10
   },
   chatItemContainer:{
     width: '100%',
