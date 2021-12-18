@@ -55,10 +55,11 @@ const ChatScreen = ({ navigation }) => {
                 <TextInput
                     style={styles.textInput}
                     placeholder="Write your message"
+                    multiline
                 />
                <View>
                     <Text style={styles.linkIcon}>
-                        <Icon name="link" size={20} color="#000" />
+                        <Icon name="link" size={20} color="#9A9891" />
                     </Text>
                </View>
                

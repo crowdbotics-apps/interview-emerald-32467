@@ -35,14 +35,18 @@ const App = ({ navigation }) => {
           headerTitle: 'CHAT HISOTRY',
           headerTitleAlign: 'center',
           headerRight: () => (
+            <View style={({marginRight: 10})}>
             <Text style={styles.linkIcon}>
-              <Icon name="plus" size={20} color="#000" />
+              <Icon name="plus" size={20} color="#9A9891" />
             </Text>
+          </View>
           ),
           headerLeft: () => (
-            <Text style={styles.linkIcon}>
-              <Icon name="chevron-left" size={20} color="#000" />
-            </Text>
+            <View style={({marginLeft: 10})}>
+              <Text style={styles.linkIcon}>
+                <Icon name="chevron-left" size={20} color="#9A9891" />
+              </Text>
+            </View>
           ),
         }}
       />
@@ -53,14 +57,18 @@ const App = ({ navigation }) => {
           headerTitle: 'ELMER JAMES',
           headerTitleAlign: 'center',
           headerRight: () => (
-            <Text style={styles.linkIcon}>
-              <Icon name="dots-three-vertical" size={20} color="#000" />
-            </Text>
+            <View style={({marginRight: 10})}>
+              <Text style={styles.linkIcon}>
+                <Icon name="dots-three-vertical" size={20} color="#9A9891" />
+              </Text>
+            </View>
           ),
           headerLeft: () => (
-            <Text style={styles.linkIcon}>
-              <Icon name="chevron-left" size={20} color="#000" />
-            </Text>
+            <View style={({marginLeft: 10})}>
+              <Text style={styles.linkIcon}>
+                <Icon name="chevron-left" size={20} color="#9A9891" />
+              </Text>
+            </View>
           ),
         }}
       />
